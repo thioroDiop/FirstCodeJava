@@ -38,13 +38,14 @@ public class Main {
             float prix = sc.nextFloat();
             sc.nextLine();
               // on recupere le total de la commande aggrégé avec l'ancien total s'il existe
-            totalCommande = totalCommande + (quantite * prix);
-            listCommande=description +" "+ listCommande;
+            totalCommande =totalCommande + (quantite * prix);
+            // on concaténe l'ensemble des descriptions dans une récap (listCommande) avec la quantité, le prix unitaire et le total par commande en affichant la devise
+            listCommande= +quantite+"* "+description +  "  ( "+prix+ "€)    "+ totalCommande+"€\n"+ listCommande;
             i++;
         }
 
-        // imprimer le ticket à la fin
-        System.out.println("Bonjour le total de votre commande " +listCommande+ " est de : " + totalCommande);
+        // imprimer le ticket à la fin dans une mise en forme et la recap des commandes
+        System.out.println("----------------Facture-------------\n" +listCommande+ "\n-------Total de : " + totalCommande+"€---------");
 
 
 

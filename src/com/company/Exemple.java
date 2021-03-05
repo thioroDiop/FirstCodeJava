@@ -110,9 +110,6 @@ public class Exemple {
         //declarer une couleur
         Color macouleur = Color.RED;
 
-        /*String carte = "";
-        carte.setColor(Color.YELLOW);    // set the drawing color
-        carte.getColor();*/
     }
 
     private static void exo3_3_1(Scanner sc) {

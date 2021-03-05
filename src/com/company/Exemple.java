@@ -17,7 +17,7 @@ public class Exemple {
                 case 0: {
                     System.out.println("Merci et Au revoir");
                     break;// cas pour sortir du l'execution si on il va toujours attendre qu'on rentre une nouvelle valeur
-                //question est ce qu'une boucle Do-While doit toujours avoir une condition qui stoppe le process?
+                    //question est ce qu'une boucle Do-While doit toujours avoir une condition qui stoppe le process?
                 }
                 case 1:
                     exo1(sc);

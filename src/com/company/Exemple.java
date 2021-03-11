@@ -1,7 +1,7 @@
 package com.company;
 
 import java.awt.*;
-import java.awt.desktop.SystemEventListener;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exemple {
@@ -26,7 +26,7 @@ public class Exemple {
                     exo2(sc);
                     break;
                 case 3: {
-                    exo3_3_1(sc);
+                    exo3_7();
                     break;
                 }
                 default: {
@@ -116,9 +116,91 @@ public class Exemple {
 //Écrire un programme qui affiche une règle graduée d'une longueur n, avec des graduations tous les 5 pas
         System.out.println("Quel est la longueur de la régle");
         int n = sc.nextInt();
-        sc.nextLine();
+        // int n = readInt(sc, "Quel est la longueur de la régle"); En commentaire car il attend une entrée pour s'exécuter
 
         System.out.println(n < 5 ? "[" + "-".repeat(n) + "]" : "[" + "----+".repeat(n / 5) + "-".repeat(n % 5) + "]");
+    }
+
+
+    private static void exo1_3_1(
+            Scanner scan) {
+
+        System.out.println("Entrez le prénom : ");
+        String firstName = scan.nextLine();
+
+        System.out.println("Entrez le nom : ");
+        String name = scan.nextLine();
+
+        System.out.println("Entrez l'age : ");
+        int age = scan.nextInt();
+        scan.nextLine();
+
+        System.out.println("Entrez votre Taille : ");
+        float height = scan.nextFloat();
+        scan.nextLine();
+
+        System.out.println("pourquoi vous rejoignez la formation ? ");
+        String formation = scan.nextLine();
+
+        System.out.println("Donner le montant d'un compte bancaire en €");
+        int amount = scan.nextInt() * 100;
+        scan.nextLine();
+        System.out.println("Je m'appelle " + firstName + " " + name + " j'ai " + age + " et je mesure " + height + "\n j'ai fait cette formation car: " + formation + "\n j'ai " + amount + "centime €");
+
+
+        System.out.println("Entrez une année et on voit dit si elle est bissextile ou non");
+        int year = scan.nextInt();
+        int rest1 = year % 100;
+        int rest2 = year % 400;
+        System.out.println((rest2 == 0 && rest1 == 0) ? "cette année est bissextile" : "Cete année n'est pas bissextile");
+        scan.nextLine();
+
+        //declarer une couleur
+        Color macouleur = Color.RED;
+
+    }
+
+    //Écrire un programme qui permette d'afficher la table de multiplication jusqu'à n × m. Par exemple :
+    private static int[][] exo3_7() {
+
+        int n = 9; //nombre de lignes
+        int m = 12; // nombre de colonnes
+        int[][] tab = new int[n][m];
+        // remplissage  de la 1er ligne
+        for (int j = 0; j != tab[0].length; ++j) {
+            tab[0][j] = j + 1;
+
+        }
+
+        // remplissage  de la 1er colonne
+        for (int i = 0; i != tab.length; ++i) {
+            tab[i][0] = i + 1;
+        }
+
+        // remplissage  de la ligne 1 à n
+        for (int l = 1; l != tab.length; ++l) {
+            for (int col = 1; col != tab[0].length; ++col) {
+                tab[l][col] = tab[l][0] * tab[0][col];
+            }
+        }
+        // affifichage du tableau
+        String format="%"+(nbDigits(tab[tab.length-1][tab[0].length-1])+1)+"d";
+        for (int c = 0; c != tab.length; ++c) {
+            for (int j = 0; j != tab[1].length; j++) {
+                System.out.printf(format, tab[c][j]);
+            }
+            System.out.println();
+        }
+        return tab;
+    }
+    public static int nbDigits(long v){
+        int res=0;
+        long pow10=(v >0 )? 1 : -1;
+        while(pow10<= v){
+            ++res;
+            pow10= pow10*10; //pow10 *= 10
+        }
+        return res;
     }
 
 }

@@ -26,17 +26,22 @@ public class Exemple {
                     exo2(sc);
                     break;
                 case 3: {
-                    exo3_7();
+                    exo3_7(9, 12);
                     break;
                 }
-                default: {
-                    System.out.println("Ce numéro d'exercice n'existe pas ");
+                case 4: {
+                    exo3_8_1();
+                    break;
                 }
+                    default: {
+                        System.out.println("Ce numéro d'exercice n'existe pas ");
+                    }
 
+                }
             }
-        } while (saisi != 0);
+            while (saisi != 0) ;
 
-    }
+        }
 
     private static int readInt(Scanner sc, String message) {
         boolean invalid = false;
@@ -122,49 +127,33 @@ public class Exemple {
     }
 
 
-    private static void exo1_3_1(
-            Scanner scan) {
+//    private static void 3_3_2(int nbl, int nbc){
+//        //3.3.2 2D
+//        //Écrire un programme qui affiche un rectangle de taille nColonnes par nLignes.
+//        nbl=3;
+//        nbc=2;
+//    }
 
-        System.out.println("Entrez le prénom : ");
-        String firstName = scan.nextLine();
+    private static void exo3_8_1 (){
+        //3.8.1
+        //Écrire un programme qui permet d'afficher une table, en représentant les lignes et les colonnes, de nColonnes par nLignes.
+        int nColonnes = 4;
+        int nLignes = 3;
+        System.out.print(("┏"+"━"+("┳━").repeat(nColonnes-1)+"┓"+"\n" ));
+        for (int i = 0; i <nLignes-1 ; i++) {
+        System.out.print((  "┃ "+"┃ ".repeat(nColonnes) +"\n"+
+                "┣"+"━╋".repeat(nColonnes-1)+"━┫"+"\n"));
+        }
 
-        System.out.println("Entrez le nom : ");
-        String name = scan.nextLine();
-
-        System.out.println("Entrez l'age : ");
-        int age = scan.nextInt();
-        scan.nextLine();
-
-        System.out.println("Entrez votre Taille : ");
-        float height = scan.nextFloat();
-        scan.nextLine();
-
-        System.out.println("pourquoi vous rejoignez la formation ? ");
-        String formation = scan.nextLine();
-
-        System.out.println("Donner le montant d'un compte bancaire en €");
-        int amount = scan.nextInt() * 100;
-        scan.nextLine();
-        System.out.println("Je m'appelle " + firstName + " " + name + " j'ai " + age + " et je mesure " + height + "\n j'ai fait cette formation car: " + formation + "\n j'ai " + amount + "centime €");
-
-
-        System.out.println("Entrez une année et on voit dit si elle est bissextile ou non");
-        int year = scan.nextInt();
-        int rest1 = year % 100;
-        int rest2 = year % 400;
-        System.out.println((rest2 == 0 && rest1 == 0) ? "cette année est bissextile" : "Cete année n'est pas bissextile");
-        scan.nextLine();
-
-        //declarer une couleur
-        Color macouleur = Color.RED;
+        System.out.println("┃ "+"┃ ".repeat(nColonnes) +"\n"+ "┗"+"━"+("┻━").repeat(nColonnes-1)+"┛"+"\n");
 
     }
 
     //Écrire un programme qui permette d'afficher la table de multiplication jusqu'à n × m. Par exemple :
-    private static int[][] exo3_7() {
+    private static int[][] exo3_7(int n, int m) {
 
-        int n = 9; //nombre de lignes
-        int m = 12; // nombre de colonnes
+         //n nombre de lignes
+         //m nombre de colonnes
         int[][] tab = new int[n][m];
         // remplissage  de la 1er ligne
         for (int j = 0; j != tab[0].length; ++j) {
@@ -183,6 +172,15 @@ public class Exemple {
                 tab[l][col] = tab[l][0] * tab[0][col];
             }
         }
+
+        // ou bien on fait une remplissage  du tableau
+        for (int i = 1; i != tab.length; ++i) {
+            for (int j = 1; j != tab[i].length; ++j) {
+                tab[i][j] = (i+1) * (j+1);
+            }
+        }
+
+
         // affifichage du tableau
         String format="%"+(nbDigits(tab[tab.length-1][tab[0].length-1])+1)+"d";
         for (int c = 0; c != tab.length; ++c) {

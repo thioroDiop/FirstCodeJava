@@ -33,15 +33,15 @@ public class Exemple {
                     exo3_8_1();
                     break;
                 }
-                    default: {
-                        System.out.println("Ce numéro d'exercice n'existe pas ");
-                    }
-
+                default: {
+                    System.out.println("Ce numéro d'exercice n'existe pas ");
                 }
-            }
-            while (saisi != 0) ;
 
+            }
         }
+        while (saisi != 0);
+
+    }
 
     private static int readInt(Scanner sc, String message) {
         boolean invalid = false;
@@ -134,26 +134,54 @@ public class Exemple {
 //        nbc=2;
 //    }
 
-    private static void exo3_8_1 (){
+    private static void exo3_8_1() {
         //3.8.1
         //Écrire un programme qui permet d'afficher une table, en représentant les lignes et les colonnes, de nColonnes par nLignes.
-        int nColonnes = 4;
-        int nLignes = 3;
-        System.out.print(("┏"+"━"+("┳━").repeat(nColonnes-1)+"┓"+"\n" ));
-        for (int i = 0; i <nLignes-1 ; i++) {
-        System.out.print((  "┃ "+"┃ ".repeat(nColonnes) +"\n"+
-                "┣"+"━╋".repeat(nColonnes-1)+"━┫"+"\n"));
+        int nColonnes = 9;
+        int nLignes = 6;
+
+
+
+//Solution Bernard
+//        private static String emptyGrid(int nRows,int nCols) {
+//    String[] linesData = make_array("-", nCols);
+//    String[] rowsData = make_array(toString(make_array(" ", nCols)
+//                                            , "┃", "┃", "┃\n")
+//                                    ,nRows);
+//    return toString(rowsData,
+//            toString(linesData,"┏","┳","┓\n"),
+//            toString(linesData, "┣","╋","┫\n"),
+//            toString(linesData,"┗","┻","┛\n"));
+//}
+//private static String[] make_array(String s, int n) {
+//    String[]res= new String[n];
+//    //Arrays.fill(res, s);
+//    for(int i=0; i != res.length; ++i){
+//        res[i]= s;
+//    }
+//    return res;
+//}
+
+
+
+        System.out.print(("┏" + "━" + ("┳━").repeat(nColonnes - 1) + "┓" + "\n"));
+        for (int i = 0; i < nLignes - 1; i++) {
+            System.out.print(("┃ " + "┃ ".repeat(nColonnes) + "\n" +
+                    "┣" + "━╋".repeat(nColonnes - 1) + "━┫" + "\n"));
         }
 
-        System.out.println("┃ "+"┃ ".repeat(nColonnes) +"\n"+ "┗"+"━"+("┻━").repeat(nColonnes-1)+"┛"+"\n");
+        System.out.println("┃ " + "┃ ".repeat(nColonnes) + "\n" + "┗" + "━" + ("┻━").repeat(nColonnes - 1) + "┛" + "\n");
+
 
     }
+
+
 
     //Écrire un programme qui permette d'afficher la table de multiplication jusqu'à n × m. Par exemple :
     private static int[][] exo3_7(int n, int m) {
 
-         //n nombre de lignes
-         //m nombre de colonnes
+        //n nombre de ligne
+        //m nombre de colonnes
         int[][] tab = new int[n][m];
         // remplissage  de la 1er ligne
         for (int j = 0; j != tab[0].length; ++j) {
@@ -176,29 +204,45 @@ public class Exemple {
         // ou bien on fait une remplissage  du tableau
         for (int i = 1; i != tab.length; ++i) {
             for (int j = 1; j != tab[i].length; ++j) {
-                tab[i][j] = (i+1) * (j+1);
+                tab[i][j] = (i + 1) * (j + 1);
             }
         }
 
 
         // affifichage du tableau
-        String format="%"+(nbDigits(tab[tab.length-1][tab[0].length-1])+1)+"d";
+        String format = "%" + (nbDigits(tab[tab.length - 1][tab[0].length - 1]) + 1) + "d";
         for (int c = 0; c != tab.length; ++c) {
-            for (int j = 0; j != tab[1].length; j++) {
-                System.out.printf(format, tab[c][j]);
-            }
+
+           for (int j = 0; j != tab[1].length; j++) {
+               System.out.printf(format, tab[c][j]);
+           }
             System.out.println();
         }
         return tab;
     }
-    public static int nbDigits(long v){
-        int res=0;
-        long pow10=(v >0 )? 1 : -1;
-        while(pow10<= v){
+
+    public static int nbDigits(long v) {
+        int res = 0;
+        long pow10 = (v > 0) ? 1 : -1;
+        while (pow10 <= v) {
             ++res;
-            pow10= pow10*10; //pow10 *= 10
+            pow10 = pow10 * 10; //pow10 *= 10
         }
         return res;
     }
 
+
+    public static String toString(String[] data, String begin, String separator, String end) {
+        String result = begin;
+        for (int i = 0; i < data.length; i++) {
+            result = result + data[i];
+            if (data.length - 1 != i) {
+                result = result + separator;
+            }
+        }
+        return result + end;
+    }
+
+
 }
+

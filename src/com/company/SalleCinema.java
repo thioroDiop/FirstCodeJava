@@ -40,23 +40,20 @@ public class SalleCinema {
                 System.out.println("il n'y a plus de place sur la rangée");
             } else {
 
+
                 // attibution de places //on cherche la 1er place libre
-
-                System.out.println("nblaces= " + nbPlaces);
-
-
                 for (int j = 0; j < salle[row].length && compteur != nbPlaces; j++) {
                     if (salle[row][j] == '-') {// je cherche une place vide
                         salle[row][j] = 'X';// j'aloue la place
                         compteur = compteur + 1;
                     }
                 }
-                System.out.println("comteur= " + compteur);
+
 
 
                   // afficher le tableau
                 for (int l = 0; l != salle.length; ++l) {
-                   // System.out.print("[");
+                    System.out.print(l+" | ");
                     for (int c = 0; c != salle[l].length; ++c) {
 
                         System.out.print("["+ salle[l][c] + "] ");
@@ -87,7 +84,7 @@ public class SalleCinema {
     }
 
 
-    //fonction sui retourne le nombre de place libre sur la rangée choisie
+    //fonction qui retourne le nombre de place libre sur la rangée choisie
     private static int FreePlace(char[][] salle, int numRang) {
         int res = 0;
         for (int j = 0; j != salle[numRang].length; j++) {
